@@ -10,7 +10,7 @@ function CardComponent({movie}: Prop) {
   return (
     <Card overflow='hidden' borderRadius={'1rem'}>
         <Image  src={'https://image.tmdb.org/t/p/original/' + movie.backdrop_path}/>
-        <CardBody>
+        <CardBody fontSize={'xl'}>
             {movie.title}
         </CardBody>
     </Card>

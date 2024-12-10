@@ -17,7 +17,7 @@ function GridMovie({movieQuery}: Prop) {
 
     if(error) return null
   return (
-    <SimpleGrid m={3}  spacing={5} columns={{sm: 1, md: 2 , lg: 3}}>
+    <SimpleGrid m={3}  spacing={7} columns={{sm: 1, md: 2 , lg: 3}}>
 
         {data.map(movie => 
         <>      

@@ -33,7 +33,7 @@ const [movieQuery, setMovieQuery] = useState<movieQuery>({} as movieQuery)
     </GridItem>
     <Show above='lg'>
       <GridItem area='aside'>
-        <Genres onSelectGenre={(genre) => setMovieQuery({...movieQuery, sortGenre: genre})}/>
+        <Genres selectedGenre={movieQuery} onSelectGenre={(genre) => setMovieQuery({...movieQuery, sortGenre: genre})}/>
       </GridItem>
     </Show>
     
