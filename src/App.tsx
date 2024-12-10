@@ -1,21 +1,28 @@
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
-import { Grid, GridItem, Show, Spinner, Text } from '@chakra-ui/react'
+import { Grid, GridItem, Show, SimpleGrid, Spinner, Text } from '@chakra-ui/react'
 import Nav from './Component/Nav/Nav'
 import { GetMovie } from './Hooks/getMoive'
-
+import GridMovie from './Component/Main/GridMovie'
 
 
 function App() { 
 
-  const {movies, loading, error} = GetMovie()
+
   return (
     <>
     <Grid templateAreas={{
     base: `"nav" "main"`,
     lg: `"nav nav" "aside main"`
-  }}>
+  }}
+  templateColumns={
+    {
+      base: '1fr',
+      lg: '250px 1fr'
+    }
+  }
+  >
     <GridItem area='nav'>
       <Nav/>
     </GridItem>
@@ -26,7 +33,7 @@ function App() {
     </Show>
     
     <GridItem area='main'>
-      
+        <GridMovie />
     </GridItem>
   </Grid>
     </>

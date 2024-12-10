@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { apiRequest } from "../service/apiRequest";
 import { CanceledError } from "axios";
 
-interface movieProp {
+export interface movieProp {
     id: number;
-    title: string
+    title: string;
+    backdrop_path: string;
 }
 
 interface movie {
