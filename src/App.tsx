@@ -7,6 +7,7 @@ import GridMovie from './Component/Main/GridMovie'
 import Genres from './Component/Genres/Genres'
 import { GenresList } from './Hooks/getGenres'
 
+
 export interface movieQuery {
   sortGenre: GenresList | null
 }
