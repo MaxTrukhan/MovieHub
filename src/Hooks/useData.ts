@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { apiRequest } from "../Service/apiRequest";
-import { CanceledError } from "axios";
+import { AxiosRequestConfig, CanceledError } from "axios";
 
 
 interface movie <T>{
@@ -9,7 +9,7 @@ interface movie <T>{
 }
 
 
-export const useData = <T>(endPoint: string) => {
+export const useData = <T>(endPoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
     const [data, setData] = useState<T[]>([])
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(true)
@@ -17,7 +17,10 @@ export const useData = <T>(endPoint: string) => {
     useEffect(() => {
         const controler = new AbortController
         setLoading(true)
-        apiRequest.get<movie<T>>(endPoint, {signal: controler.signal})
+        apiRequest.get<movie<T>>(endPoint, {
+            signal: controler.signal,
+            ...requestConfig
+        })
         .then(res => {
             setLoading(false)
             setData(res.data.results)
@@ -29,7 +32,7 @@ export const useData = <T>(endPoint: string) => {
             }
            return() => controler.abort()
         }) 
-    }, [])
+    }, deps ? [...deps] : [])
 
     return({ data, error, loading})
 }

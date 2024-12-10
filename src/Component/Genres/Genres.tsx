@@ -1,9 +1,12 @@
 import React from 'react'
-import { GenreList } from '../../Hooks/getGenres'
-import { Menu, Button, Heading, ListItem, List, Box } from '@chakra-ui/react'
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { GenreList, GenresList } from '../../Hooks/getGenres'
+import {  Heading, ListItem, List, Box } from '@chakra-ui/react'
 
-function Genres() {
+interface Prop {
+    onSelectGenre: (genre: GenresList) => void
+}
+
+function Genres({onSelectGenre}: Prop) {
 
     const {data} = GenreList()
 
@@ -16,7 +19,7 @@ function Genres() {
             
             <List spacing={3}>
                 {data.map(genre => 
-                    <ListItem letterSpacing={1}  fontSize={'xl'} key={genre.id}>
+                    <ListItem cursor={'pointer'} onClick={() => onSelectGenre(genre)} letterSpacing={1}  fontSize={'xl'} key={genre.id}>
                         {genre.name}
                     </ListItem>
                 )}
