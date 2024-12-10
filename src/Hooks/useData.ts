@@ -16,16 +16,16 @@ export const useData = <T>(endPoint: string) => {
 
     useEffect(() => {
         const controler = new AbortController
-    
+        setLoading(true)
         apiRequest.get<movie<T>>(endPoint, {signal: controler.signal})
         .then(res => {
-            setData(res.data.results)
             setLoading(false)
+            setData(res.data.results)
         })
         .catch(err => {
             if(err instanceof CanceledError){
-                setError(err.message)
                 setLoading(false)
+                setError(err.message)
             }
            return() => controler.abort()
         }) 

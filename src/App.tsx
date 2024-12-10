@@ -5,6 +5,7 @@ import { Grid, GridItem, Show, SimpleGrid, Spinner, Text } from '@chakra-ui/reac
 import Nav from './Component/Nav/Nav'
 import { GetMovie } from './Hooks/getMoive'
 import GridMovie from './Component/Main/GridMovie'
+import Genres from './Component/Genres/Genres'
 
 
 function App() { 
@@ -28,7 +29,7 @@ function App() {
     </GridItem>
     <Show above='lg'>
       <GridItem area='aside'>
-        aside
+        <Genres/>
       </GridItem>
     </Show>
     

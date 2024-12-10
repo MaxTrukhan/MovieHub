@@ -6,7 +6,7 @@ export interface movieProp {
     backdrop_path: string;
 }
 
-export const GetMovie = () => useData<movieProp>('/movie')
+export const GetMovie = () => useData<movieProp>('/discover/movie')
 
 
 
