@@ -1,21 +1,24 @@
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
-import { Grid, GridItem, Show} from '@chakra-ui/react'
+import { Box, Grid, GridItem, Menu, MenuItem, MenuList, Show, SimpleGrid} from '@chakra-ui/react'
 import Nav from './Component/Nav/Nav'
 import GridMovie from './Component/Main/GridMovie'
 import Genres from './Component/Genres/Genres'
 import { GenresList } from './Hooks/getGenres'
+import SearchedMovie from './Component/Main/SearchedMovie'
+
 
 
 export interface movieQuery {
   sortGenre: GenresList | null
+  searchMovie: string
 }
+
 
 function App() { 
 
 const [movieQuery, setMovieQuery] = useState<movieQuery>({} as movieQuery)
-
   return (
 
     <Grid templateAreas={{
@@ -30,7 +33,7 @@ const [movieQuery, setMovieQuery] = useState<movieQuery>({} as movieQuery)
   }
   >
     <GridItem area='nav'>
-      <Nav/>
+      <Nav onSearch={(searchMoive) => setMovieQuery({...movieQuery, searchMovie: searchMoive})}/>
     </GridItem>
     <Show above='lg'>
       <GridItem area='aside'>
@@ -39,6 +42,8 @@ const [movieQuery, setMovieQuery] = useState<movieQuery>({} as movieQuery)
     </Show>
     
     <GridItem area='main'>
+        <SearchedMovie movieQuery={movieQuery}/>
+      
         <GridMovie movieQuery={movieQuery}/>
     </GridItem>
   </Grid>

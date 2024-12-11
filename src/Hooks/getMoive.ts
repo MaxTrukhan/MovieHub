@@ -7,11 +7,10 @@ export interface movieProp {
     backdrop_path: string;
 }
 
-export const GetMovie = (movieQuery: movieQuery) => useData<movieProp>('/discover/movie', {
-    params: {
-        with_genres: movieQuery.sortGenre?.id
-    }
-}, [movieQuery])
 
 
-
+ export const GetMovie = (movieQuery: movieQuery) => useData<movieProp>('/discover/movie', {
+     params: {
+        with_genres: movieQuery.sortGenre?.id,
+     }
+ }, [movieQuery])

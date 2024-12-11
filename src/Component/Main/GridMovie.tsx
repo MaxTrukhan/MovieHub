@@ -6,6 +6,8 @@ import CardComponent from './CardComponent'
 import Skeletons from './Skeleton'
 import CardConteinerSkeleton from './CardConteinerSkeleton'
 import { movieQuery } from '../../App'
+import Search from '../Nav/Search'
+import SearchedMovie from './SearchedMovie'
 
 
 interface Prop {
@@ -15,12 +17,14 @@ interface Prop {
 function GridMovie({movieQuery}: Prop) {
     const {data, loading, error} = GetMovie(movieQuery)
 
-    if(error) return null
+
+    if(error)  console.log(error)
   return (
     <SimpleGrid m={3}  spacing={7} columns={{sm: 1, md: 2 , lg: 3}}>
-
+        
         {data.map(movie => 
         <>      
+         
 
             { loading ? 
                 <CardConteinerSkeleton >
