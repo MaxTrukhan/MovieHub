@@ -1,4 +1,4 @@
-import { Card, SimpleGrid, Image, CardBody } from '@chakra-ui/react'
+import { Card, SimpleGrid, Image, CardBody, Heading } from '@chakra-ui/react'
 import { GetMovie } from '../../Hooks/getMoive'
 import { apiRequest } from '../../Service/apiRequest'
 import CardConteiner from './CardConteiner'
@@ -19,13 +19,13 @@ function GridMovie({movieQuery}: Prop) {
 
 
     if(error)  console.log(error)
-  return (
+return (
+<>
+    <Heading>{movieQuery.sortGenre?.name}</Heading>
     <SimpleGrid m={3}  spacing={7} columns={{sm: 1, md: 2 , lg: 3}}>
         
         {data.map(movie => 
         <>      
-         
-
             { loading ? 
                 <CardConteinerSkeleton >
                     <Skeletons />
@@ -40,6 +40,8 @@ function GridMovie({movieQuery}: Prop) {
         )}
         
     </SimpleGrid>
+</>
+   
   )
 }
 
